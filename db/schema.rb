@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_27_041840) do
+ActiveRecord::Schema.define(version: 2022_08_28_060110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "font_awesomes", force: :cascade do |t|
+    t.string "prefijo_nombre", limit: 100
+    t.string "icono", limit: 50
+    t.string "termino"
+    t.string "codigo_css", limit: 25
+    t.string "tipo_icono", limit: 50
+    t.integer "user_created_id"
+    t.integer "user_updated_id"
+    t.string "estado", limit: 10
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
