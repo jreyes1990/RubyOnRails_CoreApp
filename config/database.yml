@@ -17,9 +17,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: corerails
-  username: developer
-  password: developer
   host: localhost
   port: 5432
   # For details on connection pooling, see Rails configuration guide
@@ -28,6 +25,9 @@ default: &default
 
 development:
   <<: *default
+  database: corerails
+  username: developer
+  password: developer
   schema_search_path: developer,sharedapp,coreapp
 
   # The specified database role being used to connect to postgres.

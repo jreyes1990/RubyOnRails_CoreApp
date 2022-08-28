@@ -4,10 +4,9 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>App</title>
+    <title>CoreApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -20,8 +19,13 @@
       <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-          <%= render partial: 'layouts/templates/navbar' %>
-          <%= yield %>
+          <%= render partial: 'layouts/templates/topbar' %>
+          <div class="container-fluid">
+            <!-- ALERTAS -->
+            <%= render 'layouts/templates/alertas' %>
+            <!-- FIN ALERTAS -->
+            <%= yield %>
+          </div>
         </div>
         <!-- End of Main Content -->
         <%= render partial: 'layouts/templates/footer' %>

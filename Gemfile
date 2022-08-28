@@ -28,11 +28,34 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# https://guias.makeitreal.camp/ruby-on-rails-i/devise
+# https://github.com/heartcombo/devise
+gem 'devise'
+
+# gema para manejo de sessiones
+# https://www.rubydoc.info/gems/activerecord-session_store/2.0.0
+gem 'activerecord-session_store'
+
+# Esta gema proporciona solo íconos gratuitos de Font-Awesome
+# https://www.rubydoc.info/gems/font_awesome5_rails/1.5.0
 gem 'font_awesome5_rails'
+
+# Simple Form tiene como objetivo ser lo más flexible posible mientras lo ayuda con componentes poderosos para crear sus formularios.
+# https://github.com/heartcombo/simple_form
+gem 'simple_form'
+
+# Le permite crear archivos de datos iniciales a partir de los datos existentes en su base de datos.
+# https://www.rubydoc.info/gems/seed_dump/3.3.1
+gem 'seed_dump'
+
+#gem "stimulus_reflex"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  #marco de prueba RSpec a Ruby on Rails como una alternativa directa a su marco de prueba predeterminado
+  # https://github.com/rspec/rspec-rails
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -42,6 +65,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Agregue un comentario que resuma el esquema actual en la parte superior o inferior
+  # https://github.com/ctran/annotate_models
+  gem 'annotate'
 end
 
 group :test do

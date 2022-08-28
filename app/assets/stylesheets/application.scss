@@ -17,5 +17,30 @@
 @import "sb-admin/sb-admin-2";
 @import "startbootstrap-sb-admin-2/node_modules/bootstrap/dist/css/bootstrap";
 
+@import "select2-theme-bootstrap4/dist/select2-bootstrap";
+
+@import "datatables.net-bs4/css/dataTables.bootstrap4";
+@import "datatables.net-buttons-bs4/css/buttons.bootstrap4";
+
+@import "select2/dist/css/select2";
+
 @import "font_awesome5_webfont";
 @import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+
+/*#################################################################################################################################*/
+/*estilos para la tabla*/
+table th {
+  background-color: #029B4E !important;
+  color: white;
+}
+table>tbody>tr>td {
+  vertical-align: middle !important;
+}
+
+/*para alinear los botones y cuadro de busqueda*/
+/*
+.btn-group, .btn-group-vertical {
+    position: absolute !important;
+}
+*/
+
