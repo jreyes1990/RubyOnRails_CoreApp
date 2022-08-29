@@ -39,6 +39,8 @@ import "select2/dist/js/select2";
 
 import "startbootstrap-sb-admin-2/vendor/fontawesome-free/js/all";
 
+import "controllers";
+
 let pdfMake = require("pdfmake/build/pdfmake");
 let pdfFonts = require("pdfmake/build/vfs_fonts");
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -53,7 +55,7 @@ document.addEventListener("turbolinks:load", () => {
         "info": "Mostrando _END_ registros, de _TOTAL_ registros",
         "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
         "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-        "sSearch": "Buscar:",
+        "sSearch": "",
         "oPaginate": {
             "sFirst": "Inicio",
             "sLast":"Último",

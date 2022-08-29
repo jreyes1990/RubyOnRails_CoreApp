@@ -48,6 +48,13 @@ gem 'simple_form'
 # https://www.rubydoc.info/gems/seed_dump/3.3.1
 gem 'seed_dump'
 
+# Uso de SweetAlert2 con Stimulus-Rails: https://www.youtube.com/watch?v=Nwy4c57hibM
+# Stimulus se combina maravillosamente con Turbo para proporcionar una solución completa para aplicaciones rápidas y convincentes con una cantidad mínima de esfuerzo.
+# https://github.com/hotwired/stimulus-rails
+gem 'stimulus-rails'
+# Uso de SweetAlert2: https://sweetalert2.github.io/
+# https://codigonautas.com/creacion-de-bonitos-mensajes-emergentes-con-sweetalert2/
+
 #gem "stimulus_reflex"
 
 group :development, :test do

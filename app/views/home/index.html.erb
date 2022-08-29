@@ -4,6 +4,14 @@
   </div>
   <div class="card-body">
     <div class="container-fluid">
+      <%= link_to 'Visitar Gooogle', 'https://google.com', data: {controller: 'sweetalert',
+                                                                  action: 'click->sweetalert#showAlert',
+                                                                  sweetalert_title_value: "Esta seguro de acceder?",
+                                                                  sweetalert_confirm_text_value: "Si",
+                                                                  sweetalert_cancel_text_value: "No" } %>
+      <div data-controller="'hello'"></div>
+      <br>
+
       <div class="row">
         <div class="col-md-12">
           <div class="col-md-12 table-responsive">

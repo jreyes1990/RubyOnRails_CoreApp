@@ -68,7 +68,11 @@
                           <%end%>
                         <!--< end %>
                         < if tiene_permiso("BOTON ELIMINAR REGISTRO", "VER") %>-->
-                          <%= link_to  inactivar_font_awesome_path(:id => font_awesome.id), class: "btn btn-outline-danger btn-sm ", data: { confirm: 'Se eliminara' } do %>
+                          <%= link_to  inactivar_font_awesome_path(:id => font_awesome.id), class: "btn btn-outline-danger btn-sm ", data: {controller: 'sweetalert',
+                                                                                                                                            action: 'click->sweetalert#showAlert',
+                                                                                                                                            sweetalert_title_value: "Esta seguro de inactivar el icono #{font_awesome.icono}",
+                                                                                                                                            sweetalert_confirm_text_value: "Si",
+                                                                                                                                            sweetalert_cancel_text_value: "No" } do %>
                             <i class="fas fa-trash-alt"></i>
                           <%end%>
                         <!--< end %>-->
