@@ -69,7 +69,7 @@
                         <!--< end %>
                         < if tiene_permiso("BOTON ELIMINAR REGISTRO", "VER") %>-->
                           <%= link_to  inactivar_font_awesome_path(:id => font_awesome.id), class: "btn btn-outline-danger btn-sm ", data: {controller: 'sweetalert',
-                                                                                                                                            action: 'click->sweetalert#showAlert',
+                                                                                                                                            action: 'click->sweetalert#inactivarAlert',
                                                                                                                                             sweetalert_title_value: "Esta seguro de inactivar el icono #{font_awesome.icono}",
                                                                                                                                             sweetalert_confirm_text_value: "Si",
                                                                                                                                             sweetalert_cancel_text_value: "No" } do %>

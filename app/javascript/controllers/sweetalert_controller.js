@@ -47,10 +47,46 @@ export default class extends Controller {
       if (result.isConfirmed) {
         this.redirect = true;
         this.element.click();
-        //Swal.fire('Saved!', '', 'success')
+        Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+        )
       } else if (result.isDenied) {
         //Swal.fire('Changes are not saved', '', 'info')
       }
     });
   }
+
+  inactivarAlert(event){
+    if (this.redirect) return;
+
+    event.stopImmediatePropagation();
+    event.preventDefault();
+
+    Swal.fire({
+      toast: true,
+      timer: 5000,
+      timerProgressBar: true,
+      backdrop: true,
+      title: 'Estas seguro?',
+      text: this.titleValue,
+      icon: 'warning',
+      reverseButtons: true,
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: this.confirmTextValue,
+      cancelButtonText: this.cancelTextValue
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+        )
+      }
+    })
+  }
+
 }
