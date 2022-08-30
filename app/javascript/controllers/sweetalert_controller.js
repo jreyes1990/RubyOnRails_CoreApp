@@ -65,7 +65,8 @@ export default class extends Controller {
     event.preventDefault();
 
     Swal.fire({
-      toast: true,
+      toast: false,
+      position: 'center',
       timer: 5000,
       timerProgressBar: true,
       backdrop: true,
@@ -74,17 +75,14 @@ export default class extends Controller {
       icon: 'warning',
       reverseButtons: true,
       showCancelButton: true,
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#3085d6',
+      confirmButtonColor: '#029b4e',
+      cancelButtonColor: '#d33',
       confirmButtonText: this.confirmTextValue,
       cancelButtonText: this.cancelTextValue
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-        )
+        this.redirect = true;
+        this.element.click();
       }
     })
   }
