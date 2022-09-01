@@ -69,10 +69,11 @@
                         <!--< end %>
                         < if tiene_permiso("BOTON ELIMINAR REGISTRO", "VER") %>-->
                           <%= link_to  inactivar_font_awesome_path(:id => font_awesome.id), class: "btn btn-outline-danger btn-sm ", data: {controller: 'sweetalert',
-                                                                                                                                            action: 'click->sweetalert#inactivarAlert',
-                                                                                                                                            sweetalert_title_value: "Esta seguro de inactivar el icono #{font_awesome.icono}",
-                                                                                                                                            sweetalert_confirm_text_value: "Si",
-                                                                                                                                            sweetalert_cancel_text_value: "No" } do %>
+                                                                                                                                            action: 'click->sweetalert#btnInactivarToast',
+                                                                                                                                            sweetalert_confirm_title_value: "Esta seguro de inactivar el icono #{font_awesome.icono}",
+                                                                                                                                            sweetalert_confirm_text_value: "Si, Inactivar",
+                                                                                                                                            sweetalert_cancel_text_value: "No, Cancelar",
+                                                                                                                                            sweetalert_cancel_title_value: "Se ha cancelado la inactivación del icono #{font_awesome.icono}" } do %>
                             <i class="fas fa-trash-alt"></i>
                           <%end%>
                         <!--< end %>-->
