@@ -5,10 +5,12 @@ import ApplicationController from './application_controller'
  * Learn more at: https://docs.stimulusreflex.com
  */
 export default class extends ApplicationController {
-  static values = { confirmTitle: String,
-    confirmText: String,
-    cancelText: String,
-    cancelTitle: String }
+  static values = { confirmAlert: String,
+                    cancelAlert: String,
+                    confirmTitle: String,
+                    cancelTitle: String,
+                    confirmBtn: String,
+                    cancelBtn: String  }
 
   /*
    * Regular Stimulus lifecycle methods
@@ -41,7 +43,7 @@ export default class extends ApplicationController {
       timer: 1500,
       timerProgressBar: false,
       backdrop: true,
-      confirmButtonColor: "#1c7a1e",
+      confirmButtonColor: "#029b4f",
       showConfirmButton: false
     })
   }
@@ -59,7 +61,7 @@ export default class extends ApplicationController {
       timer: 1500,
       timerProgressBar: false,
       backdrop: true,
-      confirmButtonColor: "#d09701",
+      confirmButtonColor: "#e89420",
       showConfirmButton: false
     })
   }
@@ -77,7 +79,7 @@ export default class extends ApplicationController {
       timer: 1500,
       timerProgressBar: false,
       backdrop: true,
-      confirmButtonColor: "#d33",
+      confirmButtonColor: "#be2617",
       showConfirmButton: false
     })
   }
@@ -95,7 +97,7 @@ export default class extends ApplicationController {
       timer: 1500,
       timerProgressBar: false,
       backdrop: true,
-      confirmButtonColor: "#1c7a1e",
+      confirmButtonColor: "#029b4f",
       showConfirmButton: false
     })
   }
@@ -113,7 +115,7 @@ export default class extends ApplicationController {
       timer: 1500,
       timerProgressBar: false,
       backdrop: true,
-      confirmButtonColor: "#d09701",
+      confirmButtonColor: "#e89420",
       showConfirmButton: false
     })
   }
@@ -131,7 +133,7 @@ export default class extends ApplicationController {
       timer: 1500,
       timerProgressBar: false,
       backdrop: true,
-      confirmButtonColor: "#d33",
+      confirmButtonColor: "#be2617",
       showConfirmButton: false
     })
   }
@@ -189,7 +191,7 @@ export default class extends ApplicationController {
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -209,14 +211,14 @@ export default class extends ApplicationController {
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-success btn-sm',
+        cancelButton: 'btn btn-outline-danger btn-sm'
       },
       buttonsStyling: true
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
+      title: this.confirmAlertValue,
       html: this.confirmTitleValue,
       icon: 'warning',
       toast: false,
@@ -226,10 +228,10 @@ export default class extends ApplicationController {
       timer: 5000,
       timerProgressBar: true,
       showCancelButton: true,
-      confirmButtonColor: "#1c7a1e",
-      cancelButtonColor: "#d33",
-      confirmButtonText: this.confirmTextValue,
-      cancelButtonText: this.cancelTextValue,
+      confirmButtonColor: "#029b4f",
+      cancelButtonColor: "#be2617",
+      confirmButtonText: this.confirmBtnValue,
+      cancelButtonText: this.cancelBtnValue,
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
@@ -240,7 +242,7 @@ export default class extends ApplicationController {
           result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire({
-          title: 'Cancelado',
+          title: this.cancelAlertValue,
           html: this.cancelTitleValue,
           icon: 'error',
           toast: false,
@@ -260,14 +262,14 @@ export default class extends ApplicationController {
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-success btn-sm',
+        cancelButton: 'btn btn-outline-danger btn-sm'
       },
       buttonsStyling: true
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
+      title: this.confirmAlertValue,
       html: this.confirmTitleValue,
       icon: 'warning',
       toast: false,
@@ -277,10 +279,10 @@ export default class extends ApplicationController {
       timer: 5000,
       timerProgressBar: true,
       showCancelButton: true,
-      confirmButtonColor: "#1c7a1e",
-      cancelButtonColor: "#d33",
-      confirmButtonText: this.confirmTextValue,
-      cancelButtonText: this.cancelTextValue,
+      confirmButtonColor: "#029b4f",
+      cancelButtonColor: "#be2617",
+      confirmButtonText: this.confirmBtnValue,
+      cancelButtonText: this.cancelBtnValue,
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
@@ -291,7 +293,7 @@ export default class extends ApplicationController {
           result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire({
-          title: 'Cancelado',
+          title: this.cancelAlertValue,
           html: this.cancelTitleValue,
           icon: 'error',
           toast: false,
@@ -311,14 +313,14 @@ export default class extends ApplicationController {
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-success btn-sm',
+        cancelButton: 'btn btn-outline-danger btn-sm'
       },
       buttonsStyling: true
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
+      title: this.confirmAlertValue,
       html: this.confirmTitleValue,
       icon: 'warning',
       toast: true,
@@ -328,10 +330,10 @@ export default class extends ApplicationController {
       timer: 5000,
       timerProgressBar: true,
       showCancelButton: true,
-      confirmButtonColor: "#1c7a1e",
-      cancelButtonColor: "#d33",
-      confirmButtonText: this.confirmTextValue,
-      cancelButtonText: this.cancelTextValue,
+      confirmButtonColor: "#029b4f",
+      cancelButtonColor: "#be2617",
+      confirmButtonText: this.confirmBtnValue,
+      cancelButtonText: this.cancelBtnValue,
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
@@ -342,7 +344,7 @@ export default class extends ApplicationController {
           result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire({
-          title: 'Cancelado',
+          title: this.cancelAlertValue,
           html: this.cancelTitleValue,
           icon: 'error',
           toast: true,
@@ -362,14 +364,14 @@ export default class extends ApplicationController {
 
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
+        confirmButton: 'btn btn-success btn-sm',
+        cancelButton: 'btn btn-outline-danger btn-sm'
       },
       buttonsStyling: true
     })
 
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
+      title: this.confirmAlertValue,
       html: this.confirmTitleValue,
       icon: 'warning',
       toast: true,
@@ -379,10 +381,10 @@ export default class extends ApplicationController {
       timer: 5000,
       timerProgressBar: true,
       showCancelButton: true,
-      confirmButtonColor: "#1c7a1e",
-      cancelButtonColor: "#d33",
-      confirmButtonText: this.confirmTextValue,
-      cancelButtonText: this.cancelTextValue,
+      confirmButtonColor: "#029b4f",
+      cancelButtonColor: "#be2617",
+      confirmButtonText: this.confirmBtnValue,
+      cancelButtonText: this.cancelBtnValue,
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
@@ -393,7 +395,7 @@ export default class extends ApplicationController {
           result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire({
-          title: 'Cancelado',
+          title: this.cancelAlertValue,
           html: this.cancelTitleValue,
           icon: 'error',
           toast: true,
