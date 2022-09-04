@@ -18,7 +18,8 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+# https://stackoverflow.com/questions/58918869/ruby-on-rails-operation-now-in-progress-connect2-would-block
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -51,11 +52,15 @@ gem 'seed_dump'
 # Uso de SweetAlert2 con Stimulus-Rails: https://www.youtube.com/watch?v=Nwy4c57hibM
 # Stimulus se combina maravillosamente con Turbo para proporcionar una solución completa para aplicaciones rápidas y convincentes con una cantidad mínima de esfuerzo.
 # https://github.com/hotwired/stimulus-rails
-gem 'stimulus-rails'
+#gem 'stimulus-rails'
+# https://docs.stimulusreflex.com/hello-world/quickstart
+# https://github.com/stimulusreflex/stimulus_reflex
+# https://www.headway.io/blog/a-future-for-rails-stimulusreflex
+gem "stimulus_reflex"
 # Uso de SweetAlert2: https://sweetalert2.github.io/
 # https://codigonautas.com/creacion-de-bonitos-mensajes-emergentes-con-sweetalert2/
 
-#gem "stimulus_reflex"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -39,8 +39,6 @@ import "select2/dist/js/select2";
 
 import "startbootstrap-sb-admin-2/vendor/fontawesome-free/js/all";
 
-import "controllers";
-
 let pdfMake = require("pdfmake/build/pdfmake");
 let pdfFonts = require("pdfmake/build/vfs_fonts");
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -202,3 +200,5 @@ document.addEventListener("turbolinks:load", () => {
     });
 
 });
+
+import "controllers"
