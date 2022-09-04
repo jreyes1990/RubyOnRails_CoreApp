@@ -59,6 +59,7 @@ gem 'seed_dump'
 gem "stimulus_reflex"
 # Uso de SweetAlert2: https://sweetalert2.github.io/
 # https://codigonautas.com/creacion-de-bonitos-mensajes-emergentes-con-sweetalert2/
+# Configuracion stimulus-reflex: https://docs.stimulusreflex.com/hello-world/setup
 
 
 
