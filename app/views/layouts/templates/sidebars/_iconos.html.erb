@@ -3,20 +3,21 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-  Addons
+  Icons
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIconos"
+<li class="<%= is_active_controller_icono_titulo %>">
+  <a class="menu_sb <%= is_active_controller_icono %>" href="#" data-toggle="collapse" data-target="#collapseIconos"
      aria-expanded="true" aria-controls="collapseIconos">
     <i class="fas fa-fw fa-folder"></i>
-    <span>Icono</span>
+    <span>Iconos</span>
   </a>
-  <div id="collapseIconos" class="collapse" aria-labelledby="headingIconos" data-parent="#accordionSidebar">
+  <div id="collapseIconos" class="opcion_sb <%= is_active_option_controller_icono %>"
+       aria-labelledby="headingIconos" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">FontAwesome:</h6>
-      <%= link_to font_awesomes_url, class: "collapse-item" do %>
+      <h6 class="collapse-header">Custom Iconos:</h6>
+      <%= link_to font_awesomes_url, class: is_active_action("font_awesomes") do %>
         <i class="fas fa-tasks"></i>
         <span>FontAwesome</span>
       <% end %>
