@@ -1510,12 +1510,12 @@ pre code {
 }
 
 .table-bordered {
-  border: 1px solid #e3e6f0;
+  border: 2px solid #e3e6f0 !important;
 }
 
 .table-bordered th,
 .table-bordered td {
-  border: 1px solid #e3e6f0;
+  border: 1px solid #e3e6f0 !important;
 }
 
 .table-bordered thead th,
@@ -1531,7 +1531,11 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #e0fdce !important;
+}
+
+.table-striped tbody tr {
+  background-color: #f4f4f8 !important;
 }
 
 .table-hover tbody tr:hover {
@@ -2394,8 +2398,8 @@ fieldset:disabled a.btn {
 
 .btn-secondary {
   color: #fff;
-  background-color: #858796;
-  border-color: #858796;
+  background-color: #fff !important;
+  border-color: #fff !important;
 }
 
 .btn-secondary:hover {
@@ -2652,14 +2656,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-  color: #4e73df;
-  border-color: #4e73df;
+  color: #4e73df !important;
+  border-color: #4e73df !important;
+  font-size: 20px !important;
 }
 
 .btn-outline-primary:hover {
-  color: #fff;
-  background-color: #4e73df;
-  border-color: #4e73df;
+  color: #fff !important;
+  background-color: #4e73df !important;
+  border-color: #4e73df !important;
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -2686,6 +2691,7 @@ fieldset:disabled a.btn {
 .btn-outline-secondary {
   color: #858796;
   border-color: #858796;
+  font-size: 20px;
 }
 
 .btn-outline-secondary:hover {
@@ -2716,18 +2722,19 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-success {
-  color: #1cc88a;
-  border-color: #1cc88a;
+  color: #1cc88a !important;
+  border-color: #1cc88a !important;
+  font-size: 20px !important;
 }
 
 .btn-outline-success:hover {
-  color: #fff;
-  background-color: #1cc88a;
-  border-color: #1cc88a;
+  color: #fff !important;
+  background-color: #1cc88a !important;
+  border-color: #1cc88a !important;
 }
 
 .btn-outline-success:focus, .btn-outline-success.focus {
-  box-shadow: 0 0 0 0.2rem rgba(28, 200, 138, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(28, 200, 138, 0.5) !important;
 }
 
 .btn-outline-success.disabled, .btn-outline-success:disabled {
@@ -2748,18 +2755,19 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-info {
-  color: #36b9cc;
-  border-color: #36b9cc;
+  color: #36b9cc !important;
+  border-color: #36b9cc !important;
+  font-size: 20px !important;
 }
 
 .btn-outline-info:hover {
-  color: #fff;
-  background-color: #36b9cc;
-  border-color: #36b9cc;
+  color: #fff !important;
+  background-color: #36b9cc !important;
+  border-color: #36b9cc !important;
 }
 
 .btn-outline-info:focus, .btn-outline-info.focus {
-  box-shadow: 0 0 0 0.2rem rgba(54, 185, 204, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(54, 185, 204, 0.5) !important;
 }
 
 .btn-outline-info.disabled, .btn-outline-info:disabled {
@@ -2780,18 +2788,19 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-warning {
-  color: #f6c23e;
-  border-color: #f6c23e;
+  color: #f6c23e !important;
+  border-color: #f6c23e !important;
+  font-size: 20px !important;
 }
 
 .btn-outline-warning:hover {
-  color: #fff;
-  background-color: #f6c23e;
-  border-color: #f6c23e;
+  color: #fff !important;
+  background-color: #f6c23e !important;
+  border-color: #f6c23e !important;
 }
 
 .btn-outline-warning:focus, .btn-outline-warning.focus {
-  box-shadow: 0 0 0 0.2rem rgba(246, 194, 62, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(246, 194, 62, 0.5) !important;
 }
 
 .btn-outline-warning.disabled, .btn-outline-warning:disabled {
@@ -2812,18 +2821,19 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-danger {
-  color: #e74a3b;
-  border-color: #e74a3b;
+  color: #e74a3b !important;
+  border-color: #e74a3b !important;
+  font-size: 20px !important;
 }
 
 .btn-outline-danger:hover {
-  color: #fff;
-  background-color: #e74a3b;
-  border-color: #e74a3b;
+  color: #fff !important;
+  background-color: #e74a3b !important;
+  border-color: #e74a3b !important;
 }
 
 .btn-outline-danger:focus, .btn-outline-danger.focus {
-  box-shadow: 0 0 0 0.2rem rgba(231, 74, 59, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(231, 74, 59, 0.5) !important;
 }
 
 .btn-outline-danger.disabled, .btn-outline-danger:disabled {
@@ -11278,7 +11288,7 @@ form.user .btn-user {
 }
 
 footer.sticky-footer {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   flex-shrink: 0;
 }
 
