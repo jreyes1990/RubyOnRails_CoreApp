@@ -1,23 +1,76 @@
 <!-- Divider -->
 <hr class="sidebar-divider">
-
 <!-- Heading -->
 <div class="sidebar-heading">
   Configuración
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-     aria-expanded="true" aria-controls="collapseTwo">
-    <i class="fas fa-fw fa-cog"></i>
-    <span>Components</span>
+<li class="<%= is_active_controller_sistema_titulo %>">
+  <a class="menu_sb <%= is_active_controller_sistema %>" href="#" data-toggle="collapse"
+     data-target="#collapseSistema" aria-expanded="true" aria-controls="collapseSistema">
+    <i class="fas fa-fw fa-wrench"></i>
+    <span>SISTEMAS</span>
   </a>
-  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+  <div id="collapseSistema" class="opcion_sb <%= is_active_option_controller_sistema %>"
+       aria-labelledby="headingSistema" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
-      <h6 class="collapse-header">Custom Components:</h6>
-      <a class="collapse-item" href="buttons.html">Buttons</a>
-      <a class="collapse-item" href="cards.html">Cards</a>
+      <h6 class="collapse-header">Opciones:</h6>
+      <!--INICIA VALIDACION DE OPCIONES MOSTRAR EN EL SIDEBAR -->
+      <!--< if tiene_permiso_sidebar("MENU EMPRESAS", "VER OPCION") %>-->
+        <%=link_to empresas_path, class: is_active_action("empresas") do %>
+          <i class="fas fa-building"></i>
+          <span>Empresa</span>
+        <%end%>
+      <!--< end %>-->
+      <!--< if tiene_permiso_sidebar("MENU AREAS EMPRESA", "VER OPCION") %>-->
+        <%=link_to areas_path, class: is_active_action("areas") do %>
+          <i class="fas fa-sitemap"></i>
+          <span>Areas - Empresa</span>
+        <%end%>
+      <!--< end %>-->
+      <!--< if tiene_permiso_sidebar("MENU ROL", "VER OPCION") %>-->
+        <%=link_to roles_path, class: is_active_action("roles")  do %>
+          <i class="fas fa-user-tag"></i>
+          <span>Rol</span>
+        <%end%>
+      <!--< end %>-->
+      <!--< if tiene_permiso_sidebar("MENU MENU", "VER OPCION") %>-->
+        <%=link_to menus_path, class: is_active_action("menus")  do %>
+          <i class="fab fa-elementor"></i>
+          <span>Menú</span>
+        <%end%>
+      <!--< end %>-->
+      <!--< if tiene_permiso_sidebar("MENU OPCION MENU", "VER OPCION") %>-->
+        <%=link_to opciones_path, class: is_active_action("opciones")  do %>
+          <i class="fas fa-minus-square"></i>
+          <span>Menú - Opcion</span>
+        <%end%>
+      <!--< end %>-->
+      <!--< if tiene_permiso_sidebar("MENU MENU ROL", "VER OPCION") %>-->
+        <%=link_to menu_roles_path, class: is_active_action("menu_roles")  do %>
+          <i class="fas fa-user-cog"></i>
+          <span>Menú - Rol</span>
+        <%end%>
+      <!--< end %>-->
+      <!--< if tiene_permiso_sidebar("MENU ATRIBUTO", "VER OPCION") %>-->
+        <%=link_to atributos_path, class: is_active_action("atributos")  do %>
+          <i class="fas fa-atom"></i>
+          <span>Atributo</span>
+        <%end%>
+      <!--< end %>-->
+      <!--< if tiene_permiso_sidebar("MENU COMPONENTE", "VER OPCION") %>-->
+        <%=link_to componentes_path, class: is_active_action("componentes")  do %>
+          <i class="fab fa-codepen"></i>
+          <span>Componente</span>
+        <%end%>
+      <!--< end %>-->
+      <!--< if tiene_permiso_sidebar("MENU PERMISOS FORMULARIO", "VER OPCION") %>-->
+        <%=link_to opcion_cas_path, class: is_active_action("opcion_cas")  do %>
+          <i class="fas fa-clipboard-list"></i>
+          <span>Permiso Formulario</span>
+        <%end%>
+      <!--< end %>-->
     </div>
   </div>
 </li>
