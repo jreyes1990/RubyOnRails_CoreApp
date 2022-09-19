@@ -67,4 +67,6 @@ Rails.application.configure do
 
   # ADD the following line; it probably doesn't exist
   config.session_store :cache_store, key: "_sessions_development", compress: true, pool_size: 5, expire_after: 1.year
+
+  require 'carrierwave/orm/activerecord'
 end
