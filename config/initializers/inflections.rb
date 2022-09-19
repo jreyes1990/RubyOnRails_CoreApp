@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.acronym 'RESTful'
+  inflect.irregular "opcion", "opciones"
+  inflect.irregular "rol", "roles"
+  inflect.irregular "menu_rol", "menu_roles"
+end
