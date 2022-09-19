@@ -34,10 +34,10 @@
             <table id="datatable" class="table table-striped table-hover table-sm table-responsive-sm table-bordered" cellspacing="0" style="width:100%">
               <thead class="text-white">
                 <tr>
-                  <th>Tipo</th>
                   <th class="text-center">Id</th>
                   <th class="text-center">Icono</th>
                   <th>Prefijo</th>
+                  <th>Tipo</th>
                   <th class="text-center">Codigo CSS</th>
                   <th>Termino</th>
                   <th class="text-center">Estado</th>
@@ -51,10 +51,10 @@
               <tbody>
                 <% @font_awesomes.each do |font_awesome| %>
                   <tr>
-                    <td><%= font_awesome.tipo_icono %></td>
                     <td class="text-center"><%= font_awesome.id %></td>
                     <td class="text-center"><i class="<%= font_awesome.icono %>" aria-hidden="true"></i></td>
                     <td><%= font_awesome.prefijo_nombre %></td>
+                    <td><%= font_awesome.tipo_icono %></td>
                     <td class="text-center"><%= font_awesome.codigo_css %></td>
                     <td><%= font_awesome.termino %></td>
                     <td class="text-center"><%= font_awesome.estado %></td>
@@ -71,9 +71,9 @@
                           <%= link_to  inactivar_font_awesome_path(:id => font_awesome.id), class: "btn btn-outline-danger btn-sm ", data: {controller: 'sweetalert', action: 'click->sweetalert#btnInactivar',
                                                                                                                                             sweetalert_confirm_alert_value: "Inactivar",
                                                                                                                                             sweetalert_cancel_alert_value: "Cancelado",
-                                                                                                                                            sweetalert_confirm_title_value: "Esta seguro de inactivar #{font_awesome.icono}",
-                                                                                                                                            sweetalert_confirm_btn_value: "Si, Inactivar",
-                                                                                                                                            sweetalert_cancel_btn_value: "No, Cancelar",
+                                                                                                                                            sweetalert_confirm_title_value: 'Esta seguro de inactivar el icono <i class="'+"#{font_awesome.icono}"+'"</i>',
+                                                                                                                                            sweetalert_confirm_btn_value: '<i class="fas fa-check-circle"></i> <strong>Si, Inactivar</strong>',
+                                                                                                                                            sweetalert_cancel_btn_value: '<i class="fas fa-times-circle"></i> <strong>No, Cancelar</strong>',
                                                                                                                                             sweetalert_cancel_title_value: "Se ha cancelado la inactivación de #{font_awesome.icono}" } do %>
                             <i class="fas fa-trash-alt"></i>
                           <%end%>
