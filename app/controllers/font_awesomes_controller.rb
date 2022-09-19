@@ -3,7 +3,7 @@ class FontAwesomesController < ApplicationController
 
   # GET /font_awesomes or /font_awesomes.json
   def index
-    @font_awesomes = FontAwesome.where(estado: :'A').order(tipo_icono: :ASC, id: :DESC)
+    @font_awesomes = FontAwesome.where(estado: :'A').order(id: :DESC)
   end
 
   # GET /font_awesomes/1 or /font_awesomes/1.json
