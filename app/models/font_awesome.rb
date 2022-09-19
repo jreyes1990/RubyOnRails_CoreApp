@@ -17,4 +17,11 @@
 class FontAwesome < ApplicationRecord
   validates_presence_of :prefijo_nombre, :icono, :codigo_css, :tipo_icono, message: ": este campo es obligatorio"
   validates :icono, uniqueness: {case_sensitive: false, scope: [:prefijo_nombre, :codigo_css, :tipo_icono, :estado], message: "El icono que intenta registrar ya existe" }
+
+  has_many :menus
+  has_many :opciones
+
+  def desc_icono
+    "#{self.id}:  #{self.icono}; Termino: #{self.termino}"
+  end
 end
