@@ -61,7 +61,8 @@ gem "stimulus_reflex"
 # https://codigonautas.com/creacion-de-bonitos-mensajes-emergentes-con-sweetalert2/
 # Configuracion stimulus-reflex: https://docs.stimulusreflex.com/hello-world/setup
 
-
+# Uso para manejo de fotografias,  Enlace:  https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
