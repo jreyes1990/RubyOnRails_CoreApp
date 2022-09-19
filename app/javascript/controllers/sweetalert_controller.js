@@ -212,7 +212,7 @@ export default class extends ApplicationController {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success btn-sm',
-        cancelButton: 'btn btn-outline-danger btn-sm'
+        cancelButton: 'btn btn-danger btn-sm'
       },
       buttonsStyling: true
     })
@@ -241,6 +241,7 @@ export default class extends ApplicationController {
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
       ) {
+        /*
         swalWithBootstrapButtons.fire({
           title: this.cancelAlertValue,
           html: this.cancelTitleValue,
@@ -251,6 +252,7 @@ export default class extends ApplicationController {
           timer: 5000,
           timerProgressBar: true
         })
+         */
       }
     })
   }
@@ -263,7 +265,7 @@ export default class extends ApplicationController {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success btn-sm',
-        cancelButton: 'btn btn-outline-danger btn-sm'
+        cancelButton: 'btn btn-danger btn-sm'
       },
       buttonsStyling: true
     })
@@ -292,6 +294,7 @@ export default class extends ApplicationController {
           /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
       ) {
+        /*
         swalWithBootstrapButtons.fire({
           title: this.cancelAlertValue,
           html: this.cancelTitleValue,
@@ -302,6 +305,7 @@ export default class extends ApplicationController {
           timer: 5000,
           timerProgressBar: true
         })
+         */
       }
     })
   }
