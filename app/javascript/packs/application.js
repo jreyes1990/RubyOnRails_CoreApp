@@ -48,19 +48,27 @@ document.addEventListener("turbolinks:load", () => {
      * Configuracion para dataTables
      * *********************************************************/
     var espaniol = {
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "zeroRecords": "No se encontraron resultados",
+        "sEmptyTable": "No has datos disponibles en la tabla.",
+        "sLengthMenu": "Mostrar _MENU_ Entradas",
+        //"LengthMenu": [[5,10,15,20,25,50,-1],[5,10,15,20,25,50,"Todos"]],
+        //"iDisplayLength": 5,
+        "sZeroRecords": "No se encontraron resultados",
         "info": "Mostrando _END_ registros, de _TOTAL_ registros",
-        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix": "(Actualizados)",
+        "sProcessing": "Procesando...",
         "sSearch": "",
         "oPaginate": {
-            "sFirst": "Inicio",
+            "sFirst": "Primero",
             "sLast":"Último",
             "sNext":"Siguiente",
             "sPrevious": "Anterior"
         },
-        "sProcessing":"Procesando...",
+        "aria": {
+            "sSortAscending": "Ordenación Ascendente",
+            "sSortDescending": "Ordenación Descendente"
+        }
     };
 
     var var_dom = "" +
