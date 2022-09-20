@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @menu.nombre %>
+</p>
+
+<p>
+  <strong>Font awesome:</strong>
+  <%= @menu.font_awesome_id %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @menu.descripcion %>
+</p>
+
+<p>
+  <strong>User created:</strong>
+  <%= @menu.user_created_id %>
+</p>
+
+<p>
+  <strong>User updated:</strong>
+  <%= @menu.user_updated_id %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @menu.estado %>
+</p>
+
+<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<%= link_to 'Back', menus_path %>

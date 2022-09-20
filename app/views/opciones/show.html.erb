@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @opcion.nombre %>
+</p>
+
+<p>
+  <strong>Font awesome:</strong>
+  <%= @opcion.font_awesome_id %>
+</p>
+
+<p>
+  <strong>Path:</strong>
+  <%= @opcion.path %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @opcion.descripcion %>
+</p>
+
+<p>
+  <strong>Controlador:</strong>
+  <%= @opcion.controlador %>
+</p>
+
+<p>
+  <strong>User created:</strong>
+  <%= @opcion.user_created_id %>
+</p>
+
+<p>
+  <strong>User updated:</strong>
+  <%= @opcion.user_updated_id %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @opcion.estado %>
+</p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @opcion.menu_id %>
+</p>
+
+<%= link_to 'Edit', edit_opcion_path(@opcion) %> |
+<%= link_to 'Back', opciones_path %>
