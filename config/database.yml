@@ -25,10 +25,10 @@ default: &default
 
 development:
   <<: *default
-  database: corerails
+  database: postgres
   username: developer
   password: developer
-  schema_search_path: developer,sharedapp,coreapp
+  schema_search_path: developer,sharedapp,corerails
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

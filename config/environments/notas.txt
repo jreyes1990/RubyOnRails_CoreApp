@@ -1,0 +1,10 @@
+***** ENLACE PARA INSTALACION DE REDES: https://es.linuxcapable.com/how-to-install-redis-on-ubuntu-20-04/
+
+***** Actualizar Ubuntu
+      sudo apt update && sudo apt upgrade
+
+***** Instalar paquetes requeridos
+      sudo apt install software-properties-common apt-transport-https curl ca-certificates gnupg2 curl -y
+
+***** Instalar Redis
+      sudo apt install redis
