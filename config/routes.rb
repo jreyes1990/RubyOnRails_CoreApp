@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     #Manejo de controlador Empresa
     resources :empresas
     get 'empresa/inactivar/:id' => "empresas#inactivar_empresa", as: 'inactivar_empresa'
+    get 'empresa/activar/:id' => "empresas#activar_empresa", as: 'activar_empresa'
 
     #Manejo de controlador Area
     resources :areas
