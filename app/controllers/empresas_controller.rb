@@ -3,7 +3,7 @@ class EmpresasController < ApplicationController
 
   # GET /empresas or /empresas.json
   def index
-    @empresas = Empresa.where(estado: :'A').order(id: 'DESC')
+    @empresas = Empresa.order(id: 'DESC')
   end
 
   # GET /empresas/1 or /empresas/1.json
@@ -71,7 +71,23 @@ class EmpresasController < ApplicationController
         format.html { redirect_to empresas_url, notice: "La Empresa #{@empresa.nombre.upcase} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @empresa }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar la empresa, Verifique!!.." }
+        format.html { redirect_to empresas_url, alert: "Ocurrio un error al inactivar la empresa, Verifique!!.." }
+        format.json { render json: @empresa.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_empresa
+    @empresa = Empresa.find(params[:id])
+    @empresa.user_updated_id = current_user.id
+    @empresa.estado = "A"
+
+    respond_to do |format|
+      if @empresa.save
+        format.html { redirect_to empresas_url, notice: "La Empresa #{@empresa.nombre.upcase} ha sido Activado" }
+        format.json { render :show, status: :created, location: @empresa }
+      else
+        format.html { redirect_to empresas_url, alert: "Ocurrio un error al Activar la empresa, Verifique!!.." }
         format.json { render json: @empresa.errors, status: :unprocessable_entity }
       end
     end

@@ -13,8 +13,8 @@
 #  user_updated_id :integer
 #
 class Empresa < ApplicationRecord
-  validates_presence_of :nombre, :descripcion, :codigo_empresa, message: ": este campo es obligatorio"
-  validates :nombre, uniqueness: {case_sensitive: false, scope: [:codigo_empresa, :estado], message: "El nombre que intenta registrar ya existe, Verifique!!" }
+  validates_presence_of :nombre, :codigo_empresa, message: ": este campo es obligatorio"
+  validates :nombre, uniqueness: {case_sensitive: false, scope: [:codigo_empresa], message: "El nombre que intenta registrar ya existe, Verifique!!" }
 
   has_many :areas, dependent: :destroy
 
