@@ -20,8 +20,16 @@ Rails.application.routes.draw do
     get "personas/modal_cambio_contra/:persona_id" => "personas#modal_cambiar_contrasena", as: "modal_cambiar_contrasena"
     post "personas/registrar_cambio_contrasena"
     get 'personas/inactivar/:id' => "personas#inactivar_persona", as: 'inactivar_persona'
+
+    post 'home/registrar_parametro'
+    post "home/registrar_area_temporal"
     #get 'personas/edit'
 
+    #Manejo controller Usuarios
+    post 'usuarios/crear_usuario'
+    get 'usuarios/index'
+    get 'usuarios/agregar_usuario'
+    
     #Manejo de controlador Atributo
     resources :atributos
     get 'atributo/inactivar/:id' => "atributos#inactivar_atributo", as: 'inactivar_atributo'
@@ -49,6 +57,28 @@ Rails.application.routes.draw do
     #Manejo de controlador Opcion_Ca
     resources :opcion_cas
     get 'opcion_ca/inactivar/:id' => "opcion_cas#inactivar_opcion_ca", as: 'inactivar_opcion_ca'
+
+    #Manejo controller Usuarios
+    post 'usuarios/crear_usuario'
+    get 'usuarios/index'
+    get 'usuarios/agregar_usuario'
+
+    #manejo de controller peresonas - areas 
+    resources :personas_areas
+    get 'usuario_area/inactivar/:id' => "personas_areas#inactivar_usuario_area", as: 'inactivar_usuario_area'
+    get "personas_areas/search_areas_by_empresa"
+
+    resources :persona_empresa_formularios
+    get "permisos/" => "persona_empresa_formularios#index_permisos", :as => "permisos"
+    post "persona_empresa_formularios/consulta_permisos"
+    get "/permisos/search" => "persona_empresa_formularios#search_usuario", as: "search_usuarios"
+    get "/permisos/show" => "persona_empresa_formularios#mostrar_permisos", as: "mostrar_permisos"
+    get "/permisos/add" => "persona_empresa_formularios#agregar_permiso", as: "agregar_permisos"
+    get "/permisos/showadd" => "persona_empresa_formularios#mostrar_agregar_permisos", as: "mostrar_agregar_permisos"
+    post "persona_empresa_formularios/guardar_permisos"
+    get "/permisos/opc_perfil" => "persona_empresa_formularios#obtener_opciones_por_perfil", as: "obtener_opciones_por_perfil"
+    get "/permisos/opc_individual" => "persona_empresa_formularios#obtener_opciones_por_individual", as: "obtener_opciones_por_individual"
+    delete "/permisos/remove/:id" => "persona_empresa_formularios#eliminar_permiso", as: "eliminar_permiso"
   end
 
   scope "/iconos" do

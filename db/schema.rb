@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_05_033845) do
+ActiveRecord::Schema.define(version: 2022_10_30_204420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,6 +142,19 @@ ActiveRecord::Schema.define(version: 2022_09_05_033845) do
     t.index ["user_id"], name: "index_parametros_on_user_id"
   end
 
+  create_table "persona_empresa_formularios", force: :cascade do |t|
+    t.bigint "personas_area_id", null: false
+    t.bigint "opcion_ca_id", null: false
+    t.string "descripcion"
+    t.integer "user_created_id"
+    t.integer "user_updated_id"
+    t.string "estado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["opcion_ca_id"], name: "index_persona_empresa_formularios_on_opcion_ca_id"
+    t.index ["personas_area_id"], name: "index_persona_empresa_formularios_on_personas_area_id"
+  end
+
   create_table "personas", force: :cascade do |t|
     t.string "nombre", limit: 100
     t.string "apellido", limit: 100
@@ -156,6 +169,18 @@ ActiveRecord::Schema.define(version: 2022_09_05_033845) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_personas_on_user_id"
+  end
+
+  create_table "personas_areas", force: :cascade do |t|
+    t.bigint "persona_id", null: false
+    t.bigint "area_id", null: false
+    t.integer "user_created_id"
+    t.integer "user_updated_id"
+    t.string "estado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["area_id"], name: "index_personas_areas_on_area_id"
+    t.index ["persona_id"], name: "index_personas_areas_on_persona_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -200,5 +225,9 @@ ActiveRecord::Schema.define(version: 2022_09_05_033845) do
   add_foreign_key "opcion_cas", "opciones"
   add_foreign_key "opciones", "menus"
   add_foreign_key "parametros", "users"
+  add_foreign_key "persona_empresa_formularios", "opcion_cas"
+  add_foreign_key "persona_empresa_formularios", "personas_areas"
   add_foreign_key "personas", "users"
+  add_foreign_key "personas_areas", "areas"
+  add_foreign_key "personas_areas", "personas"
 end

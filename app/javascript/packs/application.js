@@ -138,6 +138,77 @@ document.addEventListener("turbolinks:load", () => {
         pagingType: "full_numbers"
     });
 
+
+    $('#opcion-ca-datatable').DataTable({
+        fixedHeader: true,
+        stateSave: true,
+        stateDuration: 1200,
+        responsive: "true",
+        dom: var_dom,
+        language: espaniol,
+        processing: true,
+        serverSide: true,
+        ajax: {
+                url: $('#opcion-ca-datatable').data('source')
+            },
+        order: [0, 'desc'],
+        buttons:[
+            {
+                text:      'CSV <i class="fas fa-file-csv"></i> ',
+                extend:    'csvHtml5',
+                fieldSeparator: '\t',
+                extension: '.csv',
+                titleAttr: 'Si desea exportar el archivo, Dar click en CSV',
+                className: 'btn btn-outline-warning'
+            },{
+                text:      'EXCEL <i class="fas fa-file-excel"></i> ',
+                extend:     'csvHtml5',
+                fieldSeparator: '\t',
+                extension: '.xlsx',
+                titleAttr: 'Si desea exportar el archivo, Dar click en EXCEL',
+                className: 'btn btn-outline-success',
+                messageTop: 'La exportación excel, se ha realizado correctamente'
+            },{
+                text:      'PDF <i class="fas fa-file-pdf"></i> ',
+                extend:    'pdfHtml5',
+                titleAttr: 'Si desea exportar el archivo, Dar click en PDF',
+                className: 'btn btn-outline-danger',
+                messageTop: 'PDF created by PDFMake with Buttons for DataTables.'
+            },{
+                text:      'PRINT <i class="fas fa-print"></i> ',
+                extend:    'print',
+                titleAttr: 'Si desea imprimr, Dar click en PRINT',
+                className: 'btn btn-outline-info',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },{
+                text: 'JSON',
+                titleAttr: 'Si desea exportar el archivo, Dar click en JSON',
+                className: 'btn btn-outline-primary',
+                action: function ( e, dt, button, config ) {
+                    var data = dt.buttons.exportData();
+
+                    $.fn.dataTable.fileSave(
+                        new Blob( [ JSON.stringify( data ) ] ),
+                        'Export.json'
+                    );
+                }
+            },
+        ],
+        pagingType: "full_numbers",
+        columns: [
+            { data: "id" },
+            { data: "opcion" },
+            { data: "componente" },
+            { data: "atributo" },
+            { data: "descripcion" },
+            { data: "estado" },
+            { data: "editar" },
+            { data: "inactivar"}
+        ]
+    });
+
     /* *******************************************************
       * Para controlar el sidebar en posición cerrado o abierto
       * ******************************************************** */

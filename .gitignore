@@ -5,5 +5,10 @@ node_modules
 node_modules
 node_modules
 node_modules
-tmp/cache/bootsnap
-compile-cache-iseq
+public/
+tmp/*
+tmp/cache/bootsnap/
+tmp/cache/assets/
+tmp/cache/webpacker/
+tmp/cache/bootsnap/compile-cache-iseq/*
+tmp/cache/bootsnap/compile-cache-yaml/

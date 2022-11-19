@@ -64,6 +64,11 @@ gem "stimulus_reflex"
 # Uso para manejo de fotografias,  Enlace:  https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
 
+gem 'libreconv'
+
+#gem 'ajax-datatables-rails'
+#gem 'yajl-ruby', require: 'yajl'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

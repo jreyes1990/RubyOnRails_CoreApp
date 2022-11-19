@@ -27,7 +27,7 @@
 class Persona < ApplicationRecord
   mount_uploader :foto, FotoUploader
   belongs_to :user
-
+  has_many :personas_areas
   validates :nombre, :apellido, :direccion, :telefono, presence: false
 
   def nombre_completo

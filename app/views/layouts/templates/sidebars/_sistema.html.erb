@@ -17,60 +17,91 @@
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Opciones:</h6>
       <!--INICIA VALIDACION DE OPCIONES MOSTRAR EN EL SIDEBAR -->
+      <!--< if tiene_permiso_sidebar("MENU USUARIOS", "VER OPCION") %>-->
+        <%=link_to usuarios_index_path, class: is_active_action("usuarios") do %>
+          <i class="fas fa-users"></i>
+          <span>Usuarios</span>
+        <%end%>
+      <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU EMPRESAS", "VER OPCION") %>-->
         <%=link_to empresas_path, class: is_active_action("empresas") do %>
           <i class="fas fa-building"></i>
           <span>Empresa</span>
         <%end%>
       <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU AREAS EMPRESA", "VER OPCION") %>-->
         <%=link_to areas_path, class: is_active_action("areas") do %>
           <i class="fas fa-sitemap"></i>
           <span>Areas - Empresa</span>
         <%end%>
       <!--< end %>-->
+
+      <!--< if tiene_permiso_sidebar("MENU USUARIO AREA", "VER OPCION") %>-->
+        <%=link_to personas_areas_path, class: is_active_action("personas_areas")  do %>
+          <i class="fas fa-users"></i>
+          <span>Usuario - Area</span>
+        <%end%>
+      <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU ROL", "VER OPCION") %>-->
         <%=link_to roles_path, class: is_active_action("roles")  do %>
           <i class="fas fa-user-tag"></i>
           <span>Rol</span>
         <%end%>
       <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU MENU", "VER OPCION") %>-->
         <%=link_to menus_path, class: is_active_action("menus")  do %>
           <i class="fab fa-elementor"></i>
           <span>Menú</span>
         <%end%>
       <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU OPCION MENU", "VER OPCION") %>-->
         <%=link_to opciones_path, class: is_active_action("opciones")  do %>
           <i class="fas fa-minus-square"></i>
           <span>Menú - Opcion</span>
         <%end%>
       <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU MENU ROL", "VER OPCION") %>-->
         <%=link_to menu_roles_path, class: is_active_action("menu_roles")  do %>
           <i class="fas fa-user-cog"></i>
           <span>Menú - Rol</span>
         <%end%>
       <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU ATRIBUTO", "VER OPCION") %>-->
         <%=link_to atributos_path, class: is_active_action("atributos")  do %>
           <i class="fas fa-atom"></i>
           <span>Atributo</span>
         <%end%>
       <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU COMPONENTE", "VER OPCION") %>-->
         <%=link_to componentes_path, class: is_active_action("componentes")  do %>
           <i class="fab fa-codepen"></i>
           <span>Componente</span>
         <%end%>
       <!--< end %>-->
+
       <!--< if tiene_permiso_sidebar("MENU PERMISOS FORMULARIO", "VER OPCION") %>-->
         <%=link_to opcion_cas_path, class: is_active_action("opcion_cas")  do %>
           <i class="fas fa-clipboard-list"></i>
           <span>Permiso Formulario</span>
         <%end%>
       <!--< end %>-->
+
+      <!--< if tiene_permiso_sidebar("MENU PERMISOS USUARIO", "VER OPCION") %>-->
+        <%=link_to permisos_path, class: is_active_action("persona_empresa_formularios")  do %>
+          <i class="fas fa-key"></i>
+          <span>Permisos Usuario</span>
+        <%end%>
+      <!--< end %>-->
+        
+    <!--FINALIZA VALIDACION DEL OPCIONES PARA MOSTRAR EN EL SIDEBAR -->
     </div>
   </div>
 </li>
