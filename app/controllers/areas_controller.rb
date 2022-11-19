@@ -3,7 +3,7 @@ class AreasController < ApplicationController
 
   # GET /areas or /areas.json
   def index
-    @areas = Area.where(estado: :'A').order(id: :DESC)
+    @areas = Area.order(id: :DESC)
   end
 
   # GET /areas/1 or /areas/1.json
@@ -71,7 +71,23 @@ class AreasController < ApplicationController
         format.html { redirect_to areas_url, notice: "El Area #{@area.nombre.upcase} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @area }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar el area, Verifique!!.." }
+        format.html { redirect_to areas_url, alert: "Ocurrio un error al inactivar el area, Verifique!!.." }
+        format.json { render json: @area.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_area
+    @area = Area.find(params[:id])
+    @area.user_updated_id = current_user.id
+    @area.estado = "A"
+
+    respond_to do |format|
+      if @area.save
+        format.html { redirect_to areas_url, notice: "El Area #{@area.nombre.upcase} ha sido Activado" }
+        format.json { render :show, status: :created, location: @area }
+      else
+        format.html { redirect_to areas_url, alert: "Ocurrio un error al activar el area, Verifique!!.." }
         format.json { render json: @area.errors, status: :unprocessable_entity }
       end
     end

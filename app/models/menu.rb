@@ -15,8 +15,8 @@
 class Menu < ApplicationRecord
   belongs_to :font_awesome
 
-  validates_presence_of :nombre, :font_awesome_id, :descripcion, message: ": este campo es obligatorio"
-  validates :nombre, uniqueness: {case_sensitive: false, scope: [:font_awesome_id, :estado], message: "El nombre que intenta registrar ya existe, Verifique!!" }
+  validates_presence_of :nombre, :font_awesome_id, message: ": este campo es obligatorio"
+  validates :nombre, uniqueness: {case_sensitive: false, scope: [:nombre], message: "El nombre que intenta registrar ya existe, Verifique!!" }
 
   has_many :menu_roles
 end

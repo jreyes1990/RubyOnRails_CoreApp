@@ -3,7 +3,7 @@ class MenusController < ApplicationController
 
   # GET /menus or /menus.json
   def index
-    @menus = Menu.where(estado: 'A').order(id: 'DESC')
+    @menus = Menu.order(id: 'DESC')
   end
 
   # GET /menus/1 or /menus/1.json
@@ -71,7 +71,23 @@ class MenusController < ApplicationController
         format.html { redirect_to menus_url, notice: "El Menú #{@menu.nombre.upcase} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @menu }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar el menú, Verifique!!.." }
+        format.html { redirect_to menus_url, alert: "Ocurrio un error al inactivar el menú, Verifique!!.." }
+        format.json { render json: @menu.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_menu
+    @menu = Menu.find(params[:id])
+    @menu.user_updated_id = current_user.id
+    @menu.estado = "A"
+
+    respond_to do |format|
+      if @menu.save
+        format.html { redirect_to menus_url, notice: "El Menú #{@menu.nombre.upcase} ha sido Activado" }
+        format.json { render :show, status: :created, location: @menu }
+      else
+        format.html { redirect_to menus_url, alert: "Ocurrio un error al activar el menú, Verifique!!.." }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
     end

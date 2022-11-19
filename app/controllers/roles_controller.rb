@@ -3,7 +3,7 @@ class RolesController < ApplicationController
 
   # GET /roles or /roles.json
   def index
-    @roles = Rol.where(estado: 'A').order(id: 'DESC')
+    @roles = Rol.order(id: 'DESC')
   end
 
   # GET /roles/1 or /roles/1.json
@@ -71,7 +71,23 @@ class RolesController < ApplicationController
         format.html { redirect_to roles_url, notice: "El Rol #{@rol.nombre.upcase} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @rol }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar el rol, Verifique!!.." }
+        format.html { redirect_to roles_url, alert: "Ocurrio un error al inactivar el rol, Verifique!!.." }
+        format.json { render json: @rol.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_rol
+    @rol = Rol.find(params[:id])
+    @rol.user_updated_id = current_user.id
+    @rol.estado = "A"
+
+    respond_to do |format|
+      if @rol.save
+        format.html { redirect_to roles_url, notice: "El Rol #{@rol.nombre.upcase} ha sido Activado" }
+        format.json { render :show, status: :created, location: @rol }
+      else
+        format.html { redirect_to roles_url, alert: "Ocurrio un error al activar el rol, Verifique!!.." }
         format.json { render json: @rol.errors, status: :unprocessable_entity }
       end
     end

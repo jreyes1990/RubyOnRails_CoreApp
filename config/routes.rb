@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     #Manejo de controlador Area
     resources :areas
     get 'area/inactivar/:id' => "areas#inactivar_area", as: 'inactivar_area'
+    get 'area/activar/:id' => "areas#activar_area", as: 'activar_area'
 
     #Manejo de controlador Persona
     resources :personas
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
     #Manejo de controlador Menu
     resources :menus
     get 'menu/inactivar/:id' => "menus#inactivar_menu", as: 'inactivar_menu'
+    get 'menu/activar/:id' => "menus#activar_menu", as: 'activar_menu'
 
     #Manejo de controlador Opcion
     resources :opciones
@@ -50,6 +52,7 @@ Rails.application.routes.draw do
     #Manejo de controlador Rol
     resources :roles
     get 'rol/inactivar/:id' => "roles#inactivar_rol", as: 'inactivar_rol'
+    get 'rol/activar/:id' => "roles#activar_rol", as: 'activar_rol'
 
     #Manejo de controlador Menu-Rol
     resources :menu_roles
