@@ -268,6 +268,20 @@ document.addEventListener("turbolinks:load", () => {
         width: '100%'
     });
 
+    // Configuracion para activar select2
+    $('.select2-empresa').select2({
+        theme: "bootstrap4",
+        language: "es-GT",
+        width: '100%'
+    });
+
+    // Configuracion para activar select2
+    $('.select2-area').select2({
+        theme: "bootstrap4",
+        language: "es-GT",
+        width: '100%'
+    });
+
     //funcion para los mensajes de los toggle en las tablas
     $(function () {
         $('[data-toggle="popover"]').popover()
@@ -276,6 +290,54 @@ document.addEventListener("turbolinks:load", () => {
     //control de los tiempos de los flash
     $(".alert").fadeTo(4000, 500).slideUp(500, function () {
         $(".alert").slideUp(4000);
+    });
+
+    //BUSCADOR USUARIOS
+    $('.select2-usuario').select2({
+        ajax: {
+            url: $('.select2-usuario').data('endpoint'),
+            dataType: "json",
+            delay: 500,
+            data: function (params) {
+                return {
+                    q: params.term, // search term
+                    page: params.page
+                };
+            },
+            processResults: function (data, page) {
+                return {
+                    //results: data
+                    results: $.map(data, function (value, index) {
+                        return {
+                            id: value.valor_id,
+                            text: value.valor_text
+                        };
+                    })
+                };
+            }
+        },
+        minimumInputLength: 3,
+        theme: "bootstrap4",
+        language: "es-GT",
+        width: '100%'
+    });
+    
+    $('#usuario_selected_id').on('select2:select', function (e) {
+        $.ajax({
+            url: $('.path_search_area_empresa_p').data('endpoint'),
+            type:'GET',
+            dataType: "json",
+            data: {
+            area_empresa_persona_id_param: e.params.data.id
+            },
+            success:function(data) {                                    
+                $("#area_empresa_persona_id").empty();
+                var json = data;
+                for (var i of json) {
+                    $("#area_empresa_persona_id").append("<option value='"+i.id+"'>"+i.area+"</option>");
+                }            
+            }      
+        });      
     });
 
 });

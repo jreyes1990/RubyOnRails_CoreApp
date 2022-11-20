@@ -3,7 +3,7 @@ class UsuariosController < ApplicationController
   #before_action :comprobar_permiso
 
   def index
-    @personas = Persona.where(:estado =>'A').order(:id)
+    @personas = Persona.order(:id)
   end
 
   def new    

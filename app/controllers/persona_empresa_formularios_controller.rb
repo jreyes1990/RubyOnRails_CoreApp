@@ -4,7 +4,6 @@ class PersonaEmpresaFormulariosController < ApplicationController
 
   def index_permisos
     @usuarios = Persona.all.limit(10)
-    puts "EMPRESA CONFIGURADA PARA EL USUARIO EN SESSION: #{current_user_empresa_id}"
   end
 
   def search_areas_persona

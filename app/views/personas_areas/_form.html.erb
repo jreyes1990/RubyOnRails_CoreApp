@@ -1,7 +1,7 @@
 <!-- Inicio usuario - area -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Gestión de Usuario - Área</h6>
+    <h4 class="m-0 font-weight-bold text-warning">Gestión de Usuario - Área</h4>
   </div>
   <div class="card-body">
 
@@ -32,13 +32,13 @@
                 <%= form.collection_select(:persona_id, Persona.where(:estado => 'A'), :id, :nombre_completo ,  {:prompt => "Seleccione un Usuario"}, {:class => "form-control select2", :required => ''}) %>
                 <br>
               </div>
-
+              <br>
               <div class="field">
                 <%= form.label :empresa %>
                 <%= collection_select(:empresa, :empresa_id, Empresa.where(:estado => 'A').order(:nombre), :id, :nombre,  {:prompt => "Seleccione una Empresa"}, {:class => "form-control select2", :required => ''}) %>
                 <br>
               </div>
-
+              <br>
               <div class="field">
                 <%= form.label :area %>
                 <%= form.grouped_collection_select(:area_id, Empresa.where(:estado => 'A').order(:nombre), :areas, :nombre, :id, :nombre, {:prompt => "Seleccione una Área"}, {:class => "form-control select2", :required => ''}) %>
@@ -50,15 +50,15 @@
           </div>
           <br />
           <div class="row">
-            <div class="col-md-12 text-right">
-            <% if tiene_permiso("BOTON REGISTRAR", "VER") %>
-              <%= button_tag form.submit, class: "btn btn-success btn-sm" do %>
-              <span class="icon text-white-50">
-                <i class="fas fa-edit"></i>
-              </span>
-              <span class="text">REGISTRAR</span>
-              <%end%>
-            <% end %>
+            <div class="col-md-12 text-center">
+              <!--< if tiene_permiso("BOTON REGISTRAR", "VER") %>-->
+                <%= button_tag form.submit, class: "btn btn-outline-success btn-sm" do %>
+                  <span class="icon text-green-50">
+                    <i class="fas fa-edit"></i>
+                  </span>
+                  <span class="text">REGISTRAR</span>
+                <%end%>
+              <!--< end %>-->
               <%= link_to personas_areas_path, class: "btn btn-outline-danger btn-sm" do %>
               <span class="icon text-red-50">
                 <i class="fas fa-arrow-circle-left"></i>

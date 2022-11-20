@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get "personas/modal_cambio_contra/:persona_id" => "personas#modal_cambiar_contrasena", as: "modal_cambiar_contrasena"
     post "personas/registrar_cambio_contrasena"
     get 'personas/inactivar/:id' => "personas#inactivar_persona", as: 'inactivar_persona'
+    get 'personas/activar/:id' => "personas#activar_persona", as: 'activar_persona'
 
     post 'home/registrar_parametro'
     post "home/registrar_area_temporal"
@@ -90,6 +91,9 @@ Rails.application.routes.draw do
     get "/permisos/opc_perfil" => "persona_empresa_formularios#obtener_opciones_por_perfil", as: "obtener_opciones_por_perfil"
     get "/permisos/opc_individual" => "persona_empresa_formularios#obtener_opciones_por_individual", as: "obtener_opciones_por_individual"
     delete "/permisos/remove/:id" => "persona_empresa_formularios#eliminar_permiso", as: "eliminar_permiso"
+
+    #Para buscar las areas por empresa por persona de un usuario
+    get '/permisos/searchemp/' => "persona_empresa_formularios#search_areas_persona", as: 'searchemp'  
   end
 
   scope "/iconos" do
