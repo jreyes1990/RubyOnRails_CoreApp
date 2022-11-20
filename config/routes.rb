@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     #Manejo de controlador Opcion
     resources :opciones
     get 'opcion/inactivar/:id' => "opciones#inactivar_opcion", as: 'inactivar_opcion'
+    get 'opcion/activar/:id' => "opciones#activar_opcion", as: 'activar_opcion'
 
     #Manejo de controlador Rol
     resources :roles
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
     #Manejo de controlador Menu-Rol
     resources :menu_roles
     get 'menu_rol/inactivar/:id' => "menu_roles#inactivar_menu_rol", as: 'inactivar_menu_rol'
+    get 'menu_rol/activar/:id' => "menu_roles#activar_menu_rol", as: 'activar_menu_rol'
 
     #Manejo de controlador Opcion_Ca
     resources :opcion_cas

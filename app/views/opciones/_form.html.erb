@@ -17,12 +17,12 @@
                   <%= f.input :nombre %>
                 </div>
                 <div class="col-6">
-                  <%= f.association :font_awesome, value_method: :id, label_method: :desc_icono,  label: "Icono Font Awesome", include_blank: "Seleccione un icono FontAwesome", input_html: { class: "select2", id: 'font_awesome_id', required: true} %>
+                  <%= f.association :font_awesome, collection: FontAwesome.where("estado='A'").order("id DESC"), value_method: :id, label_method: :desc_icono,  label: "Icono Font Awesome", include_blank: "Seleccione un icono FontAwesome", input_html: { class: "select2", id: 'font_awesome_id', required: true} %>
                 </div>
               </div>
               <div class="row">
                 <div class="col-4">
-                  <%= f.association :menu, value_method: :id, label_method: :nombre,  label: "Menú", include_blank: "Seleccione un menú", input_html: { class: "select2", id: 'menu_id', required: true} %>
+                  <%= f.association :menu, collection: Menu.where("estado='A'").order("id DESC"), value_method: :id, label_method: :nombre,  label: "Menú", include_blank: "Seleccione un menú", input_html: { class: "select2", id: 'menu_id', required: true} %>
                 </div>
                 <div class="col-4">
                   <%= f.input :controlador %>

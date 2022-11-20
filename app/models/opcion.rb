@@ -27,8 +27,8 @@ class Opcion < ApplicationRecord
   belongs_to :menu
   belongs_to :font_awesome
 
-  validates_presence_of :nombre, :font_awesome_id, :path, :controlador, :menu_id, :descripcion, message: ": este campo es obligatorio"
-  validates :nombre, uniqueness: {case_sensitive: false, scope: [:path, :controlador, :menu_id, :estado], message: "El nombre que intenta registrar ya existe, Verifique!!" }
+  validates_presence_of :nombre, :font_awesome_id, :path, :controlador, :menu_id, message: ": este campo es obligatorio"
+  validates :nombre, uniqueness: {case_sensitive: false, scope: [:font_awesome_id, :path, :controlador, :menu_id], message: "El nombre que intenta registrar ya existe, Verifique!!" }
 
   has_many :menu_roles
   has_many :opcion_cas

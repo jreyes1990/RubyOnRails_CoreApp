@@ -29,5 +29,5 @@ class MenuRol < ApplicationRecord
   belongs_to :menu, :foreign_key => "menu_padre"
 
   validates_presence_of :menu_padre, :rol_id, :opcion_id, message: ": este campo es obligatorio"
-  validates :rol_id, uniqueness: {case_sensitive: false, scope: [:menu_padre,:opcion_id,:estado], message: "Error, solo puede asignar una la opcion al rol, Verifique!!." }
+  validates :rol_id, uniqueness: {case_sensitive: false, scope: [:menu_padre,:opcion_id], message: "Error, solo puede asignar una la opcion al rol, Verifique!!." }
 end

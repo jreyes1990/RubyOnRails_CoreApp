@@ -3,7 +3,7 @@ class OpcionesController < ApplicationController
 
   # GET /opciones or /opciones.json
   def index
-    @opciones = Opcion.where(estado: 'A').order(id: 'DESC')
+    @opciones = Opcion.order(id: 'DESC')
   end
 
   # GET /opciones/1 or /opciones/1.json
@@ -71,7 +71,23 @@ class OpcionesController < ApplicationController
         format.html { redirect_to opciones_url, notice: "La Opción #{@opcion.nombre.upcase} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @opcion }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar la opción, Verifique!!.." }
+        format.html { redirect_to opciones_url, alert: "Ocurrio un error al inactivar la opción, Verifique!!.." }
+        format.json { render json: @opcion.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_opcion
+    @opcion = Opcion.find(params[:id])
+    @opcion.user_updated_id = current_user.id
+    @opcion.estado = "A"
+
+    respond_to do |format|
+      if @opcion.save
+        format.html { redirect_to opciones_url, notice: "La Opción #{@opcion.nombre.upcase} ha sido Activado" }
+        format.json { render :show, status: :created, location: @opcion }
+      else
+        format.html { redirect_to opciones_url, alert: "Ocurrio un error al activar la opción, Verifique!!.." }
         format.json { render json: @opcion.errors, status: :unprocessable_entity }
       end
     end

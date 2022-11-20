@@ -14,10 +14,10 @@
             <div class="form-inputs">
               <div class="row">
                 <div class="col-md-6">
-                  <%= f.input :nombre %>
+                  <%= f.association :empresa, collection: Empresa.where("estado='A'").order("id DESC"), value_method: :id, label_method: :nombre,  label: "Empresa", include_blank: "Seleccione una empresa", input_html: { class: "select2", id: 'empresa_id', required: true} %>
                 </div>
                 <div class="col-md-6">
-                  <%= f.association :empresa, value_method: :id, label_method: :nombre,  label: "Empresa", include_blank: "Seleccione una empresa", input_html: { class: "select2", id: 'empresa_id', required: true} %>
+                  <%= f.input :nombre %>
                 </div>
               </div>
               <div class="row">

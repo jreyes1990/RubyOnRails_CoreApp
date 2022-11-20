@@ -14,13 +14,13 @@
             <div class="form-inputs">
               <div class="row">
                 <div class="col-4">
-                  <%= f.association :rol, value_method: :id, label_method: :nombre,  label: "Rol", include_blank: "Seleccione un rol", input_html: { class: "select2", id: 'rol_id', required: true} %>
+                  <%= f.association :rol, collection: Rol.where("estado='A'").order("id DESC"), value_method: :id, label_method: :nombre,  label: "Rol", include_blank: "Seleccione un rol", input_html: { class: "select2", id: 'rol_id', required: true} %>
                 </div>
                 <div class="col-4">
-                  <%= f.association :menu, value_method: :id, label_method: :nombre,  label: "Menú", include_blank: "Seleccione un menú", input_html: { class: "select2", id: 'menu_padre', required: true} %>
+                  <%= f.association :menu, collection: Menu.where("estado='A'").order("id DESC"), value_method: :id, label_method: :nombre,  label: "Menú", include_blank: "Seleccione un menú", input_html: { class: "select2", id: 'menu_padre', required: true} %>
                 </div>
                 <div class="col-4">
-                  <%= f.association :opcion, value_method: :id, label_method: :nombre,  label: "Opcion", include_blank: "Seleccione una opcion", input_html: { class: "select2", id: 'opcion_id', required: true} %>
+                  <%= f.association :opcion, collection: Opcion.where("estado='A'").order("id DESC"), value_method: :id, label_method: :nombre,  label: "Opcion", include_blank: "Seleccione una opcion", input_html: { class: "select2", id: 'opcion_id', required: true} %>
                 </div>
               </div>
               <%= f.input :descripcion, as: :text, input_html: {rows: 3} %>

@@ -3,7 +3,7 @@ class MenuRolesController < ApplicationController
 
   # GET /menu_roles or /menu_roles.json
   def index
-    @menu_roles = MenuRol.where(estado: 'A').order(id: 'DESC')
+    @menu_roles = MenuRol.order(id: 'DESC')
   end
 
   # GET /menu_roles/1 or /menu_roles/1.json
@@ -71,7 +71,23 @@ class MenuRolesController < ApplicationController
         format.html { redirect_to menu_roles_url, notice: "El Menú-Rol #{@menu_rol.menu.nombre.upcase}-#{@menu_rol.rol.nombre.upcase} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @menu_rol }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar el Menú-Rol, Verifique!!.." }
+        format.html { redirect_to menu_roles_url, alert: "Ocurrio un error al inactivar el Menú-Rol, Verifique!!.." }
+        format.json { render json: @menu_rol.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_menu_rol
+    @menu_rol = MenuRol.find(params[:id])
+    @menu_rol.user_updated_id = current_user.id
+    @menu_rol.estado = "A"
+
+    respond_to do |format|
+      if @menu_rol.save
+        format.html { redirect_to menu_roles_url, notice: "El Menú-Rol #{@menu_rol.menu.nombre.upcase}-#{@menu_rol.rol.nombre.upcase} ha sido Activado" }
+        format.json { render :show, status: :created, location: @menu_rol }
+      else
+        format.html { redirect_to menu_roles_url, alert: "Ocurrio un error al activar el Menú-Rol, Verifique!!.." }
         format.json { render json: @menu_rol.errors, status: :unprocessable_entity }
       end
     end
