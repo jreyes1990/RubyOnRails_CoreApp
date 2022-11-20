@@ -35,10 +35,12 @@ Rails.application.routes.draw do
     #Manejo de controlador Atributo
     resources :atributos
     get 'atributo/inactivar/:id' => "atributos#inactivar_atributo", as: 'inactivar_atributo'
+    get 'atributo/activar/:id' => "atributos#activar_atributo", as: 'activar_atributo'
 
     #Manejo de controlador Componente
     resources :componentes
     get 'componente/inactivar/:id' => "componentes#inactivar_componente", as: 'inactivar_componente'
+    get 'componente/activar/:id' => "componentes#activar_componente", as: 'activar_componente'
 
     #Manejo de controlador Menu
     resources :menus
@@ -63,6 +65,7 @@ Rails.application.routes.draw do
     #Manejo de controlador Opcion_Ca
     resources :opcion_cas
     get 'opcion_ca/inactivar/:id' => "opcion_cas#inactivar_opcion_ca", as: 'inactivar_opcion_ca'
+    get 'opcion_ca/activar/:id' => "opcion_cas#activar_opcion_ca", as: 'activar_opcion_ca'
 
     #Manejo controller Usuarios
     post 'usuarios/crear_usuario'

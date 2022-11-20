@@ -30,6 +30,6 @@ class OpcionCa < ApplicationRecord
   belongs_to :atributo
   belongs_to :opcion
 
-  validates_presence_of :opcion_id, :componente_id, :atributo_id, :descripcion, message: ": este campo es obligatorio"
-  validates_uniqueness_of :opcion_id, :scope => [:componente_id, :atributo_id, :estado], :message => "Error, solo puede asignar una vez el componente y el atributo al formulario, Verifique!!."
+  validates_presence_of :opcion_id, :componente_id, :atributo_id, message: ": este campo es obligatorio"
+  validates_uniqueness_of :opcion_id, :scope => [:componente_id, :atributo_id], :message => "Error, solo puede asignar una vez el componente y el atributo al formulario, Verifique!!."
 end

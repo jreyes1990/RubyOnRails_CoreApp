@@ -14,13 +14,13 @@
             <div class="form-inputs">
               <div class="row">
                 <div class="col-4">
-                  <%= f.association :opcion, value_method: :id, label_method: :nombre,  label: "Opción", include_blank: "Seleccione una opción", input_html: { class: "select2", id: 'opcion_id', required: true} %>
+                  <%= f.association :opcion, collection: Opcion.where("estado='A'").order("id DESC"), value_method: :id, label_method: :nombre,  label: "Opción", include_blank: "Seleccione una opción", input_html: { class: "select2", id: 'opcion_id', required: true} %>
                 </div>
                 <div class="col-4">
-                  <%= f.association :componente, value_method: :id, label_method: :nombre,  label: "Componente", include_blank: "Seleccione un componente", input_html: { class: "select2", id: 'componente_id', required: true} %>
+                  <%= f.association :componente, collection: Componente.where("estado='A'").order("id DESC"), value_method: :id, label_method: :nombre,  label: "Componente", include_blank: "Seleccione un componente", input_html: { class: "select2", id: 'componente_id', required: true} %>
                 </div>
                 <div class="col-4">
-                  <%= f.association :atributo, value_method: :id, label_method: :nombre,  label: "Atributo", include_blank: "Seleccione un atributo", input_html: { class: "select2", id: 'atributo_id', required: true} %>
+                  <%= f.association :atributo, collection: Atributo.where("estado='A'").order("id DESC"), value_method: :id, label_method: :nombre,  label: "Atributo", include_blank: "Seleccione un atributo", input_html: { class: "select2", id: 'atributo_id', required: true} %>
                 </div>
               </div>
               <%= f.input :descripcion, as: :text, input_html: {rows: 3} %>

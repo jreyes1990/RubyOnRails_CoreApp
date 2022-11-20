@@ -3,7 +3,7 @@ class AtributosController < ApplicationController
 
   # GET /atributos or /atributos.json
   def index
-    @atributos = Atributo.where(estado: 'A').order(id: 'DESC')
+    @atributos = Atributo.order(id: 'DESC')
   end
 
   # GET /atributos/1 or /atributos/1.json
@@ -71,7 +71,23 @@ class AtributosController < ApplicationController
         format.html { redirect_to atributos_url, notice: "El Atributo #{@atributo.nombre.upcase} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @atributo }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar el atributo, Verifique!!.." }
+        format.html { redirect_to atributos_url, alert: "Ocurrio un error al inactivar el atributo, Verifique!!.." }
+        format.json { render json: @atributo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_atributo
+    @atributo = Atributo.find(params[:id])
+    @atributo.user_updated_id = current_user.id
+    @atributo.estado = "A"
+
+    respond_to do |format|
+      if @atributo.save
+        format.html { redirect_to atributos_url, notice: "El Atributo #{@atributo.nombre.upcase} ha sido Activado" }
+        format.json { render :show, status: :created, location: @atributo }
+      else
+        format.html { redirect_to atributos_url, alert: "Ocurrio un error al activar el atributo, Verifique!!.." }
         format.json { render json: @atributo.errors, status: :unprocessable_entity }
       end
     end

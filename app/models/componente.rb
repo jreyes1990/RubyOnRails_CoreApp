@@ -12,8 +12,8 @@
 #  user_updated_id :integer
 #
 class Componente < ApplicationRecord
-  validates_presence_of :nombre, :descripcion, message: ": este campo es obligatorio"
-  validates :nombre, uniqueness: {case_sensitive: false, scope: [:estado], message: "El nombre que intenta registrar ya existe, Verifique!!" }
+  validates_presence_of :nombre, message: ": este campo es obligatorio"
+  validates :nombre, uniqueness: {case_sensitive: false, scope: [:nombre], message: "El nombre que intenta registrar ya existe, Verifique!!" }
 
   has_many :opcion_cas
 end

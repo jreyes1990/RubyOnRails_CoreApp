@@ -3,7 +3,7 @@ class ComponentesController < ApplicationController
 
   # GET /componentes or /componentes.json
   def index
-    @componentes = Componente.where(estado: 'A').order(id: 'DESC')
+    @componentes = Componente.order(id: 'DESC')
   end
 
   # GET /componentes/1 or /componentes/1.json
@@ -71,7 +71,23 @@ class ComponentesController < ApplicationController
         format.html { redirect_to componentes_url, notice: "El Componente #{@componente.nombre.upcase} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @componente }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar el componente, Verifique!!.." }
+        format.html { redirect_to componentes_url, alert: "Ocurrio un error al inactivar el componente, Verifique!!.." }
+        format.json { render json: @componente.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_componente
+    @componente = Componente.find(params[:id])
+    @componente.user_updated_id = current_user.id
+    @componente.estado = "A"
+
+    respond_to do |format|
+      if @componente.save
+        format.html { redirect_to componentes_url, notice: "El Componente #{@componente.nombre.upcase} ha sido Activado" }
+        format.json { render :show, status: :created, location: @componente }
+      else
+        format.html { redirect_to componentes_url, alert: "Ocurrio un error al activar el componente, Verifique!!.." }
         format.json { render json: @componente.errors, status: :unprocessable_entity }
       end
     end

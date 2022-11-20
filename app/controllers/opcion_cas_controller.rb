@@ -3,7 +3,7 @@ class OpcionCasController < ApplicationController
 
   # GET /opcion_cas or /opcion_cas.json
   def index
-    @opcion_cas = OpcionCa.where(estado: 'A').order(id: 'DESC')
+    @opcion_cas = OpcionCa.order(id: 'DESC')
   end
 
   # GET /opcion_cas/1 or /opcion_cas/1.json
@@ -68,10 +68,26 @@ class OpcionCasController < ApplicationController
 
     respond_to do |format|
       if @opcion_ca.save
-        format.html { redirect_to componentes_url, notice: "El Formulario #{@opcion_ca.id} ha sido Inactivado" }
+        format.html { redirect_to opcion_cas_url, notice: "El Formulario #{@opcion_ca.id} ha sido Inactivado" }
         format.json { render :show, status: :created, location: @opcion_ca }
       else
-        format.html { render :new, status: :unprocessable_entity, alert: "Ocurrio un error al inactivar el formulario, Verifique!!.." }
+        format.html { redirect_to opcion_cas_url, alert: "Ocurrio un error al inactivar el formulario, Verifique!!.." }
+        format.json { render json: @opcion_ca.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def activar_opcion_ca
+    @opcion_ca = OpcionCa.find(params[:id])
+    @opcion_ca.user_updated_id = current_user.id
+    @opcion_ca.estado = "A"
+
+    respond_to do |format|
+      if @opcion_ca.save
+        format.html { redirect_to opcion_cas_url, notice: "El Formulario #{@opcion_ca.id} ha sido Activado" }
+        format.json { render :show, status: :created, location: @opcion_ca }
+      else
+        format.html { redirect_to opcion_cas_url, alert: "Ocurrio un error al activar el formulario, Verifique!!.." }
         format.json { render json: @opcion_ca.errors, status: :unprocessable_entity }
       end
     end
