@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     post 'usuarios/crear_usuario'
     get 'usuarios/index'
     get 'usuarios/agregar_usuario'
+    get "/empresas/search" => "usuarios#search_empresa", as: "search_empresa"
+    get "/areas/search" => "usuarios#search_areas", as: "search_areas"
     
     #Manejo de controlador Atributo
     resources :atributos
