@@ -7,16 +7,15 @@ class PersonaEmpresaFormulariosController < ApplicationController
   end
 
   def search_areas_persona
-
     id_persona = params[:area_empresa_persona_id_param]
     
     @empareas = PersonasArea.joins("inner join personas on personas.id = personas_areas.persona_id 
-                                  where personas.id = #{id_persona}
-                                  and personas_areas.estado = 'A'")    
+                                    where personas.id = #{id_persona}
+                                    and personas_areas.estado = 'A'")    
 
     respond_to do |format|
-        format.json { render json: @empareas.map { |p| { id: p.area_id, area: p.nombre_area} } }
-      end   
+      format.json { render json: @empareas.map { |p| { id: p.area_id, area: p.nombre_area} } }
+    end   
   end
 
   def consulta_permisos
@@ -43,8 +42,7 @@ class PersonaEmpresaFormulariosController < ApplicationController
                                                             inner join personas on personas_areas.persona_id = personas.id
                                                             inner join opcion_cas on opcion_cas.id = persona_empresa_formularios.opcion_ca_id
                                                             inner join opciones on opciones.id = opcion_cas.opcion_id
-                                                            WHERE
-                                                            personas.id = #{@persona.id}
+                                                            WHERE personas.id = #{@persona.id}
                                                             and areas.id = #{session[:id_area_persona_consulta_permiso]}").distinct
 
     @permisosConfigurados = PersonaEmpresaFormulario.joins("inner join personas_areas on persona_empresa_formularios.personas_area_id = personas_areas.id
@@ -53,10 +51,8 @@ class PersonaEmpresaFormulariosController < ApplicationController
                                                             inner join personas on personas_areas.persona_id = personas.id
                                                             inner join opcion_cas on opcion_cas.id = persona_empresa_formularios.opcion_ca_id
                                                             inner join opciones on opciones.id = opcion_cas.opcion_id
-                                                            WHERE
-                                                            personas.id = #{@persona.id}
+                                                            WHERE personas.id = #{@persona.id}
                                                             and areas.id = #{session[:id_area_persona_consulta_permiso]}")
-    
   end
 
   
@@ -69,53 +65,48 @@ class PersonaEmpresaFormulariosController < ApplicationController
 
   def mostrar_agregar_permisos
     @persona = Persona.find(session[:id_persona_consulta_permiso])
-       
     @area = Area.find(session[:id_area_persona_consulta_permiso]) 
-
     @menu_x_role = [];
-
   end
 
   def obtener_opciones_por_perfil
     role_id = params[:role_id]
     @menu_x_role = MenuRol.where("rol_id = ?", role_id.to_i)
 
-
     respond_to do |format|
       if @menu_x_role.count > 0
         htmlGenerado = ""
         atributosComponentes = ""
         
-
         @menu_x_role.each do |mxr|
           atributosComponentes = ""
           items = mxr.opcion.opcion_cas
           items.each do |oc|
             
-            atributosComponentes << "<li
-                                        class='list-group-item d-flex justify-content-between align-items-center flex-wrap'>
-                                        <h6>#{oc.componente.nombre}</h6>
-                                        <span class='text-secondary'>
-                                            #{oc.atributo.nombre}
-                                            <input type='checkbox' name='permisoids[]' value='#{oc.id}' checked=true/>
-                                        </span>
+          atributosComponentes << "<li class='list-group-item d-flex justify-content-between align-items-center flex-wrap'>
+                                    <h6>#{oc.componente.nombre}</h6>
+                                    <span class='text-secondary'>
+                                        #{oc.atributo.nombre}
+                                        <input type='checkbox' name='permisoids[]' value='#{oc.id}' checked=true/>
+                                    </span>
                                     </li>"            
           end
+
           tarjeta = "<div class='col-md-4'>
-                        <div class='card border-bottom-success'>
-                            <div class='card-header text-success'>    
-                                #{mxr.opcion.menu.nombre}: #{mxr.opcion.nombre.upcase}                                            
+                      <div class='card border-bottom-success'>
+                        <div class='card-header text-success'>    
+                            #{mxr.opcion.menu.nombre}: #{mxr.opcion.nombre.upcase}                                            
+                        </div>
+                        <div class='card-body'>
+                            <div class='card mt-3'>
+                                <ul class='list-group list-group-flush'>
+                                    #{atributosComponentes}
+                                </ul>
                             </div>
-                            <div class='card-body'>
-                                <div class='card mt-3'>
-                                    <ul class='list-group list-group-flush'>
-                                        #{atributosComponentes}
-                                    </ul>
-                                </div>
-                            </div>
-                          </div>
+                        </div>
                       </div>
-                    "
+                     </div>"
+
           htmlGenerado << tarjeta
         end
                                    
@@ -129,7 +120,6 @@ class PersonaEmpresaFormulariosController < ApplicationController
   def obtener_opciones_por_individual
     opcion_id = params[:opcion_id]
     @atributos_x_opcion = OpcionCa.where("opcion_id = ?", opcion_id.to_i)
-
 
     respond_to do |format|
       if @atributos_x_opcion.count > 0
@@ -178,7 +168,6 @@ class PersonaEmpresaFormulariosController < ApplicationController
   end
 
   def guardar_permisos
-    
     @personaEA = PersonasArea.where("area_id = ? and persona_id = ?", session[:id_area_persona_consulta_permiso], session[:id_persona_consulta_permiso]).first    
     @permisosSeleccionados = params[:permisoids]
     @tipoAsignacion = ""
@@ -198,9 +187,9 @@ class PersonaEmpresaFormulariosController < ApplicationController
           @permisoUsuario.estado = "A"
           @permisoUsuario.save                      
         end
-        respond_to do |format|
-          format.html { redirect_to mostrar_permisos_path, notice: "Permisos otorgados al usuario exitosamente" }             
-        end
+          respond_to do |format|
+            format.html { redirect_to mostrar_permisos_path, notice: "Permisos otorgados al usuario exitosamente" }             
+          end
       else
         respond_to do |format|
           format.html { redirect_to mostrar_permisos_path, alert: "No se agregó ningun permiso" }             
@@ -211,9 +200,9 @@ class PersonaEmpresaFormulariosController < ApplicationController
   
   def eliminar_permiso
     @idPermiso = params[:id]
-    
     @permiso = PersonaEmpresaFormulario.find(@idPermiso)
     @permiso.destroy
+    
     respond_to do |format|
       format.html { redirect_to mostrar_permisos_path, notice: "Permiso eliminado Exitosamente" }
       format.json { head :no_content }
