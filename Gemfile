@@ -64,6 +64,10 @@ gem "stimulus_reflex"
 # Uso para manejo de fotografias,  Enlace:  https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave'
 
+# Uso de Popover en rails: https://rubygems.org/gems/bootstrap-popover-rails/versions/0.1.0?locale=es
+# Enlace documentacion: https://www.rubydoc.info/gems/bootstrap-popover-rails/0.1.0
+gem 'bootstrap-popover-rails', '~> 0.1.0'
+
 gem 'libreconv'
 
 #gem 'ajax-datatables-rails'
@@ -75,6 +79,7 @@ group :development, :test do
   #marco de prueba RSpec a Ruby on Rails como una alternativa directa a su marco de prueba predeterminado
   # https://github.com/rspec/rspec-rails
   gem 'rspec-rails'
+  gem 'rubocop'
 end
 
 group :development do

@@ -15,6 +15,8 @@ require("channels");
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+
+
 import "startbootstrap-sb-admin-2/vendor/jquery/jquery";
 import "@popperjs/core/dist/umd/popper";
 import "startbootstrap-sb-admin-2/vendor/bootstrap/js/bootstrap.bundle";
@@ -41,6 +43,9 @@ import "startbootstrap-sb-admin-2/vendor/fontawesome-free/js/all";
 let pdfMake = require("pdfmake/build/pdfmake");
 let pdfFonts = require("pdfmake/build/vfs_fonts");
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+//= require bootstrap/bootstrap-rails-tooltip
+//= require bootstrap/bootstrap-rails-popover
 
 document.addEventListener("turbolinks:load", () => {
   /* *******************************************************
@@ -231,7 +236,7 @@ document.addEventListener("turbolinks:load", () => {
     } else {
       sessionStorage.setItem("sidebar", "");
     }
-  });
+  })
 
   // Cierre cualquier acordeón de menú abierto cuando la ventana cambie de tamaño a continuación 768px
   if ($(window).width() < 768) {
@@ -294,8 +299,9 @@ document.addEventListener("turbolinks:load", () => {
 
   //funcion para los mensajes de los toggle en las tablas
   $(function () {
-    $('[data-toggle="popover"]').popover();
-  });
+    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="popover"]').popover()
+  })
 
   //control de los tiempos de los flash
   $(".alert")

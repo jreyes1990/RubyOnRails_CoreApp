@@ -21,7 +21,8 @@
     "stimulus": "^3.1.0",
     "stimulus_reflex": "3.4.1",
     "sweetalert2": "^11.4.29",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "webpack": "^5.75.0"
   },
   "version": "0.1.0",
   "devDependencies": {

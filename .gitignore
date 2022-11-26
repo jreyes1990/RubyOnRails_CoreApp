@@ -1,13 +1,6 @@
 node_modules
-node_modules
-node_modules
-node_modules
-node_modules
-node_modules
-node_modules
 tmp/*
-tmp/cache/bootsnap/
-tmp/cache/assets/
-tmp/cache/webpacker/
+log/*
+.idea/CoreApp.iml/*
 tmp/cache/bootsnap/compile-cache-iseq/*
-tmp/cache/bootsnap/compile-cache-yaml/
+public/packs/*
